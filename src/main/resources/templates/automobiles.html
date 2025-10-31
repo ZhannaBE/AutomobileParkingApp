@@ -1,0 +1,33 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="ru">
+<head th:replace="layout :: head"></head>
+<body>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Автомобили</h2>
+    <div>
+      <a class="btn btn-success" th:href="@{/autos/add}"><i class="bi bi-plus-lg"></i> Добавить</a>
+    </div>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle">
+      <thead class="table-light"><tr><th>ID</th><th>Модель</th><th>Стоимость</th><th>Владелец</th><th>Действия</th></tr></thead>
+      <tbody>
+        <tr th:each="a : ${autos}">
+          <td th:text="${a.id}"></td>
+          <td th:text="${a.model.name}"></td>
+          <td th:text="${#strings.format('%,.0f', a.model.cost)} + ' ₽'"></td>
+          <td th:text="${a.owner.username}"></td>
+          <td>
+            <a th:href="@{'/models/edit/' + ${a.model.id}}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-fill"></i> Модель</a>
+            <a th:href="@{'/autos/delete/' + ${a.id}}" class="btn btn-sm btn-danger" sec:authorize="hasRole('ADMIN')"><i class="bi bi-trash-fill"></i> Удалить</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

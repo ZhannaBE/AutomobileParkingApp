@@ -1,0 +1,16 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="layout :: head"></head>
+<body>
+<div class="container">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h4><i class="bi bi-calculator me-2"></i>Расчет характеристик</h4>
+      <p>Количество автомобилей: <strong th:text="${count}"></strong></p>
+      <p>Суммарная стоимость: <strong th:text="${#strings.format('%,.0f', sum)} + ' ₽'"></strong></p>
+    </div>
+  </div>
+</div>
+</body>
+</html>

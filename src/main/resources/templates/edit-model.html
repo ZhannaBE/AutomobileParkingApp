@@ -1,0 +1,24 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="layout :: head"></head>
+<body>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-body">
+          <h4 th:text="${modelEntity.id} != null ? 'Редактировать модель' : 'Добавить модель'"></h4>
+          <form method="post" th:action="@{/models/save}" th:object="${modelEntity}">
+            <input type="hidden" th:field="*{id}"/>
+            <div class="mb-3"><label class="form-label">Название</label><input th:field="*{name}" class="form-control" required/></div>
+            <div class="mb-3"><label class="form-label">Стоимость (₽)</label><input type="number" step="1" th:field="*{cost}" class="form-control" required/></div>
+            <button class="btn btn-primary" type="submit"><i class="bi bi-save-fill"></i> Сохранить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

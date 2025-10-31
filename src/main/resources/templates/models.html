@@ -1,0 +1,30 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="layout :: head"></head>
+<body>
+<div class="container">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Модели и стоимость</h3>
+    <a class="btn btn-success" th:href="@{/models/add}"><i class="bi bi-plus-lg"></i> Добавить модель</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="table-light"><tr><th>ID</th><th>Модель</th><th>Стоимость</th><th>Действия</th></tr></thead>
+      <tbody>
+        <tr th:each="m : ${models}">
+          <td th:text="${m.id}"></td>
+          <td th:text="${m.name}"></td>
+          <td th:text="${#strings.format('%,.0f', m.cost)} + ' ₽'"></td>
+          <td>
+            <a th:href="@{'/models/edit/' + ${m.id}}" class="btn btn-sm btn-primary"><i class="bi bi-pencil-fill"></i> Редактировать</a>
+            <a th:href="@{'/models/delete/' + ${m.id}}" class="btn btn-sm btn-danger"><i class="bi bi-trash-fill"></i> Удалить</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

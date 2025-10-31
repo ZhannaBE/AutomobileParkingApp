@@ -1,0 +1,32 @@
+
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ru">
+<head th:replace="layout :: head"></head>
+<body>
+<div class="container">
+  <h3 class="mb-3">Управление ролями (ADMIN)</h3>
+  <div class="table-responsive">
+    <table class="table table-hover">
+      <thead class="table-light"><tr><th>ID</th><th>Пользователь</th><th>Роли</th><th>Добавить роль</th></tr></thead>
+      <tbody>
+        <tr th:each="u : ${users}">
+          <td th:text="${u.id}"></td>
+          <td th:text="${u.username}"></td>
+          <td th:text="${u.roles}"></td>
+          <td>
+            <form method="post" th:action="@{/roles/addRole}" class="d-flex gap-2">
+              <input type="hidden" name="userId" th:value="${u.id}"/>
+              <select name="role" class="form-select form-select-sm">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+              </select>
+              <button class="btn btn-sm btn-primary" type="submit">Добавить</button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
