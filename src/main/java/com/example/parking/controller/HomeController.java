@@ -9,8 +9,8 @@ import java.security.Principal;
 
 @Controller
 public class HomeController {
-    @GetMapping({"/","/index"})
+    @GetMapping("/index")
 
-    public String home(ModelEntity model, Principal principal){ model.addAttribute("username", principal.getName()); return "index"; }
+    public String home(ModelEntity model){ return "index"; }
     @GetMapping("/about") public String about(){ return "about"; }
 }

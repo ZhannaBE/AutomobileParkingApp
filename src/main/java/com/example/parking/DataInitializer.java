@@ -55,11 +55,11 @@ public class DataInitializer implements CommandLineRunner {
         }
 
         if(modelRepo.count()==0){
-            modelRepo.save(new ModelEntity(null, "Toyota Camry", 3000000.0));
-            modelRepo.save(new ModelEntity(null, "BMW X5", 5500000.0));
-            modelRepo.save(new ModelEntity(null, "Kia Rio", 1200000.0));
-            modelRepo.save(new ModelEntity(null, "Audi A6", 4800000.0));
-            modelRepo.save(new ModelEntity(null, "Lada Vesta", 1100000.0));
+            modelRepo.save(new ModelEntity("Toyota Camry", 3000000.0));
+            modelRepo.save(new ModelEntity( "BMW X5", 5500000.0));
+            modelRepo.save(new ModelEntity( "Kia Rio", 1200000.0));
+            modelRepo.save(new ModelEntity( "Audi A6", 4800000.0));
+            modelRepo.save(new ModelEntity( "Lada Vesta", 1100000.0));
         }
 
         if(autoRepo.count()==0){
@@ -72,11 +72,11 @@ public class DataInitializer implements CommandLineRunner {
             var a6 = modelRepo.findAll().stream().filter(m->m.getName().contains("A6")).findFirst().orElse(null);
             var vesta = modelRepo.findAll().stream().filter(m->m.getName().contains("Vesta")).findFirst().orElse(null);
 
-            if(camry!=null) autoRepo.save(new Automobile(null, camry, admin));
-            if(x5!=null) autoRepo.save(new Automobile(null, x5, admin));
-            if(rio!=null) autoRepo.save(new Automobile(null, rio, user));
-            if(a6!=null) autoRepo.save(new Automobile(null, a6, admin));
-            if(vesta!=null) autoRepo.save(new Automobile(null, vesta, guest));
+            if(camry!=null) autoRepo.save(new Automobile( camry, admin));
+            if(x5!=null) autoRepo.save(new Automobile(x5, admin));
+            if(rio!=null) autoRepo.save(new Automobile(rio, user));
+            if(a6!=null) autoRepo.save(new Automobile(a6, admin));
+            if(vesta!=null) autoRepo.save(new Automobile(vesta, guest));
         }
     }
 }

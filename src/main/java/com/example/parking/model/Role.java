@@ -11,6 +11,9 @@ public class Role {
     private Long id;
     private String name;
 
+    public Role(Object o, String readOnly) {
+    }
+
     public String getName() {
         return name;
     }

@@ -54,11 +54,13 @@ public class SecurityConfig {
                 .anyRequest().authenticated()
         )
         .formLogin(form -> form
-                .loginPage("/login").permitAll()
-                .defaultSuccessUrl("/", true)
+                .loginPage("/login")
+                .defaultSuccessUrl("/index", true)
+                .permitAll()
         )
         .logout(logout -> logout.logoutSuccessUrl("/login?logout"))
-        .csrf(csrf -> csrf.ignoringRequestMatchers("/h2-console/**"))
+        .csrf(csrf -> csrf.disable())
+                //csrf.ignoringRequestMatchers("/h2-console/**"))
         .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
         return http.build();
     }

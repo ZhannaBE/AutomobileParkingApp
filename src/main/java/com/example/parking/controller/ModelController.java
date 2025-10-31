@@ -20,7 +20,7 @@ public class ModelController {
     }
 
     @GetMapping("/add")
-    public String addForm(Model model){ model.addAttribute("modelEntity", new ModelEntity()); return "edit-model"; }
+    public String addForm(Model model){ model.addAttribute("modelEntity", new ModelEntity("Lada", 1100000.0)); return "edit-model"; }
 
     @PostMapping("/save")
     public String save(ModelEntity me){ modelService.save(me); return "redirect:/models"; }

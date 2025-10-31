@@ -38,7 +38,7 @@ public class AutomobileController {
     public String add(@RequestParam Long modelId, @AuthenticationPrincipal UserDetails ud){
         User owner = userRepository.findByUsername(ud.getUsername()).orElseThrow();
         ModelEntity me = modelService.find(modelId);
-        Automobile a = new Automobile(); a.setModel(me); a.setOwner(owner);
+        Automobile a = new Automobile(me, owner); a.setModel(me); a.setOwner(owner);
         autoService.save(a);
         return "redirect:/autos";
     }
