@@ -1,5 +1,5 @@
 
-# AutomobileParkingApp_Styled
+# AutomobileParkingApp
 
 Spring Boot (Thymeleaf) application for managing automobiles, models and roles.
 Run with: `mvn spring-boot:run`
